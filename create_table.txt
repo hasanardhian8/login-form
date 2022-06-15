@@ -1,0 +1,22 @@
+create database loginform;
+
+create table users(
+user_id int,
+user_name varchar(20),
+user_email varchar(55),
+user_password varchar(255),
+user_handphone varchar(15),
+constraint user_id_pk primary key(user_id));
+
+create table roles(
+role_id int,
+role_name varchar(25),
+constraint role_id_pk primary key(role_id));
+
+create table user_roles(
+usro_id int,
+usro_user_id int,
+usro_role_id int,
+constraint usro_id_pk primary key(usro_id),
+constraint usro_user_id_fk foreign key (usro_user_id) references users(user_id),
+constraint usro_role_id_fk foreign key (usro_role_id) references roles(role_id));
